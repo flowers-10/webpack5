@@ -23,6 +23,10 @@ module.exports = {
         test: /\.css$/,
         // use数组里面 Loader 执行顺序是从右到左
         use: ["style-loader","css-loader"],
+      },
+      {
+        test:/\.less$/,
+        use:["style-loader","css-loader","less-loader"]
       }
     ],
   },
