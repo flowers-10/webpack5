@@ -12,7 +12,7 @@ module.exports = {
     // __dirname 当前文件的文件夹绝对路径
     path: path.resolve(__dirname, "dist"),
     // filename: 输出文件名
-    filename: "main.js",
+    filename: "static/js/main.js",// 将 js 文件输出到 static/js 目录中
   },
   // 加载器
   module: {
@@ -41,10 +41,19 @@ module.exports = {
         type:"asset",
         parser: {
           dataUrlCondition: {
-            maxSize: 10000 * 1024 //小于10kb的图片会被base64处理
+            maxSize: 1000 * 1024 //小于10kb的图片会被base64处理
           }
+        },
+        generator: {
+          // 将图片文件输出到 static/imgs 目录中
+          // 将图片文件命名 [hash:8][ext][query]
+          // [hash:8]: hash值取8位
+          // [ext]: 使用之前的文件扩展名
+          // [query]: 添加之前的query参数
+          filename: "static/imgs/[hash:8][ext][query]"
         }
-      }
+      },
+
     ],
   },
   // 插件
