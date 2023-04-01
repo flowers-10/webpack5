@@ -10,6 +10,36 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/count.js":
+/*!*************************!*\
+  !*** ./src/js/count.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ count)\n/* harmony export */ });\nfunction count(x, y) {\n  return x - y;\n}\n\n//# sourceURL=webpack://webpack_code/./src/js/count.js?");
+
+/***/ }),
+
+/***/ "./src/js/sum.js":
+/*!***********************!*\
+  !*** ./src/js/sum.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ sum)\n/* harmony export */ });\nfunction sum() {\n  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {\n    args[_key] = arguments[_key];\n  }\n  return args.reduce(function (p, c) {\n    return p + c;\n  }, 0);\n}\n\n//# sourceURL=webpack://webpack_code/./src/js/sum.js?");
+
+/***/ }),
+
+/***/ "./src/main.js":
+/*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_count__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/count */ \"./src/js/count.js\");\n/* harmony import */ var _js_sum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/sum */ \"./src/js/sum.js\");\n/* harmony import */ var _css_iconfont_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/iconfont.css */ \"./src/css/iconfont.css\");\n/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/index.css */ \"./src/css/index.css\");\n/* harmony import */ var _less_index_less__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./less/index.less */ \"./src/less/index.less\");\n/* harmony import */ var _sass_index_sass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sass/index.sass */ \"./src/sass/index.sass\");\n/* harmony import */ var _sass_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sass/index.scss */ \"./src/sass/index.scss\");\n/* harmony import */ var _styl_index_styl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styl/index.styl */ \"./src/styl/index.styl\");\n\n\n// 引入 Css 资源，Webpack才会对其打包\n\n\n\n\n\n\n\n// console.log(count(2, 1));\n// console.log(sum(1, 2, 3, 4));\nvar result1 = (0,_js_count__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(2, 1);\nconsole.log(result1);\nvar result2 = (0,_js_sum__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(1, 2, 3, 4);\nconsole.log(result2);\n\n//# sourceURL=webpack://webpack_code/./src/main.js?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js!./src/less/index.less":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/less-loader/dist/cjs.js!./src/less/index.less ***!
@@ -217,36 +247,6 @@ eval("\n\n/* istanbul ignore next  */\nfunction apply(styleElement, options, obj
 /***/ ((module) => {
 
 eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElement) {\n  if (styleElement.styleSheet) {\n    styleElement.styleSheet.cssText = css;\n  } else {\n    while (styleElement.firstChild) {\n      styleElement.removeChild(styleElement.firstChild);\n    }\n    styleElement.appendChild(document.createTextNode(css));\n  }\n}\nmodule.exports = styleTagTransform;\n\n//# sourceURL=webpack://webpack_code/./node_modules/style-loader/dist/runtime/styleTagTransform.js?");
-
-/***/ }),
-
-/***/ "./src/js/count.js":
-/*!*************************!*\
-  !*** ./src/js/count.js ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ count)\n/* harmony export */ });\nfunction count(x, y) {\r\n  return x - y;\r\n}\r\n\n\n//# sourceURL=webpack://webpack_code/./src/js/count.js?");
-
-/***/ }),
-
-/***/ "./src/js/sum.js":
-/*!***********************!*\
-  !*** ./src/js/sum.js ***!
-  \***********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ sum)\n/* harmony export */ });\nfunction sum(...args) {\r\n  return args.reduce((p, c) => p + c, 0);\r\n}\r\n\n\n//# sourceURL=webpack://webpack_code/./src/js/sum.js?");
-
-/***/ }),
-
-/***/ "./src/main.js":
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_count__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/count */ \"./src/js/count.js\");\n/* harmony import */ var _js_sum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/sum */ \"./src/js/sum.js\");\n/* harmony import */ var _css_iconfont_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/iconfont.css */ \"./src/css/iconfont.css\");\n/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/index.css */ \"./src/css/index.css\");\n/* harmony import */ var _less_index_less__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./less/index.less */ \"./src/less/index.less\");\n/* harmony import */ var _sass_index_sass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sass/index.sass */ \"./src/sass/index.sass\");\n/* harmony import */ var _sass_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sass/index.scss */ \"./src/sass/index.scss\");\n/* harmony import */ var _styl_index_styl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styl/index.styl */ \"./src/styl/index.styl\");\n\r\n\r\n// 引入 Css 资源，Webpack才会对其打包\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconsole.log((0,_js_count__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(2, 1));\r\nconsole.log((0,_js_sum__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(1, 2, 3, 4));\r\n// var result1 = count(2, 1);\r\n// console.log(result1);\r\n// var result2 = sum(1, 2, 3, 4);\r\n// console.log(result2);\r\n\n\n//# sourceURL=webpack://webpack_code/./src/main.js?");
 
 /***/ }),
 
