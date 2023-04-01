@@ -22,16 +22,20 @@ module.exports = {
         // 用来匹配 .css 结尾的文件
         test: /\.css$/,
         // use数组里面 Loader 执行顺序是从右到左
-        use: ["style-loader","css-loader"],
+        use: ["style-loader", "css-loader"],
       },
       {
-        test:/\.less$/,
-        use:["style-loader","css-loader","less-loader"]
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"],
       },
       {
-        test:/\.s[ac]ss$/,
-        use:["style-loader","css-loader","sass-loader"]
-      }
+        test: /\.s[ac]ss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.styl$/,
+        use: ["style-loader", "css-loader", "stylus-loader"],
+      },
     ],
   },
   // 插件
