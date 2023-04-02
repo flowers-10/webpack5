@@ -120,4 +120,5 @@ module.exports = {
   // },
   // 模式
   mode: "production", // 发布模式
+  devtool: "source-map",//优点：包含行/列映射 缺点：打包编译速度更慢
 };
