@@ -106,7 +106,8 @@ module.exports = {
                 loader: "babel-loader",
                 options: {
                   cacheDirectory: true, // 开启babel编译缓存
-                  // caheCompression: false, // 缓存文件不要压缩
+                  cacheCompression: false, // 缓存文件不要压缩
+                  plugins: ["@babel/plugin-transform-runtime"], // 减少代码体积
                 },
               },
             ],
