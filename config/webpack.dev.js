@@ -19,7 +19,7 @@ module.exports = {
     // __dirname 当前文件的文件夹绝对路径
     path: undefined, //开发模式没有输出，不需要指定输出目录
     // filename: 输出文件名
-    filename: "static/js/main.js", // 将 js 文件输出到 static/js 目录中
+    filename: "static/js/[name].js", // 将 js 文件输出到 static/js 目录中
     // clean: true, // 开发模式没有输出，不需要指定输出目录
   },
   // 加载器

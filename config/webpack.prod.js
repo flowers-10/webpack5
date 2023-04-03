@@ -40,7 +40,9 @@ module.exports = {
     // __dirname 当前文件的文件夹绝对路径
     path: path.resolve(__dirname, "../dist"),
     // filename: 输出文件名
-    filename: "static/js/main.js", // 将 js 文件输出到 static/js 目录中
+    filename: "static/js/[name].js", // 将 js 文件输出到 static/js 目录中
+    chunkFilename: "static/js/[name].chunk.js", // 动态导入输出资源命名方式
+    assetModuleFilename: "static/media/[name].[hash][ext]", // 图片、字体等资源命名方式（注意用hash）
     clean: true, // 自动将上次打包目录资源清空
   },
   // 加载器
@@ -75,21 +77,21 @@ module.exports = {
                 maxSize: 1000 * 1024, //小于10kb的图片会被base64处理
               },
             },
-            generator: {
-              // 将图片文件输出到 static/imgs 目录中
-              // 将图片文件命名 [hash:8][ext][query]
-              // [hash:8]: hash值取8位
-              // [ext]: 使用之前的文件扩展名
-              // [query]: 添加之前的query参数
-              filename: "static/imgs/[hash:8][ext][query]",
-            },
+            // generator: {
+            //   // 将图片文件输出到 static/imgs 目录中
+            //   // 将图片文件命名 [hash:8][ext][query]
+            //   // [hash:8]: hash值取8位
+            //   // [ext]: 使用之前的文件扩展名
+            //   // [query]: 添加之前的query参数
+            //   filename: "static/imgs/[hash:8][ext][query]",
+            // },
           },
           {
             test: /\.(ttf|woff2?|map4|map3|avi)$/,
             type: "asset/resource",
-            generator: {
-              filename: "static/media/[hash:8][ext][query]",
-            },
+            // generator: {
+            //   filename: "static/media/[hash:8][ext][query]",
+            // },
           },
           {
             test: /\.js$/,
@@ -128,7 +130,7 @@ module.exports = {
         __dirname,
         "../node_modules/.cache/.eslintcache"
       ),
-      threads,// 开启多进程
+      threads, // 开启多进程
     }),
     new HtmlWebpackPlugin({
       // 以 public/index.html 为模板创建文件
@@ -138,7 +140,8 @@ module.exports = {
     // 提取css成单独文件
     new MiniCssExtractPlugin({
       // 定义输出文件名和目录
-      filename: "static/css/main.css",
+      filename: "static/css/[name].css",
+      chunkFilename: "static/css/[name].chunk.css",
     }),
     // css压缩
     // new CssMinimizerPlugin(),
@@ -150,9 +153,14 @@ module.exports = {
       new CssMinimizerPlugin(),
       // 当生产模式会默认开启TerserPlugin，但是我们需要进行其他配置，就要重新写了
       new TerserPlugin({
-        parallel: threads // 开启多进程
-      })
+        parallel: threads, // 开启多进程
+      }),
     ],
+    // 代码分割配置
+    splitChunks: {
+      chunks: "all", //对所有模块进行分割
+      // 其他内容用默认配置即可
+    },
   },
   // 开发服务器
   // devServer: {
