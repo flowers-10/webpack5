@@ -4,7 +4,6 @@ const path = require("path");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-
 // cpu核数
 const threads = os.cpus().length;
 
@@ -20,6 +19,8 @@ module.exports = {
     path: undefined, //开发模式没有输出，不需要指定输出目录
     // filename: 输出文件名
     filename: "static/js/[name].js", // 将 js 文件输出到 static/js 目录中
+    chunkFilename: "static/js/[name].chunk.js", // 动态导入输出资源命名方式
+    assetModuleFilename: "static/media/[name].[hash][ext]", // 图片、字体等资源命名方式（注意用hash）
     // clean: true, // 开发模式没有输出，不需要指定输出目录
   },
   // 加载器
@@ -54,21 +55,21 @@ module.exports = {
                 maxSize: 1000 * 1024, //小于10kb的图片会被base64处理
               },
             },
-            generator: {
-              // 将图片文件输出到 static/imgs 目录中
-              // 将图片文件命名 [hash:8][ext][query]
-              // [hash:8]: hash值取8位
-              // [ext]: 使用之前的文件扩展名
-              // [query]: 添加之前的query参数
-              filename: "static/imgs/[hash:8][ext][query]",
-            },
+            // generator: {
+            //   // 将图片文件输出到 static/imgs 目录中
+            //   // 将图片文件命名 [hash:8][ext][query]
+            //   // [hash:8]: hash值取8位
+            //   // [ext]: 使用之前的文件扩展名
+            //   // [query]: 添加之前的query参数
+            //   filename: "static/imgs/[hash:8][ext][query]",
+            // },
           },
           {
             test: /\.(ttf|woff2?|map4|map3|avi)$/,
             type: "asset/resource",
-            generator: {
-              filename: "static/media/[hash:8][ext][query]",
-            },
+            // generator: {
+            //   filename: "static/media/[hash:8][ext][query]",
+            // },
           },
           {
             test: /\.js$/,
@@ -88,7 +89,6 @@ module.exports = {
                   cacheCompression: false, // 缓存文件不要压缩
                   plugins: ["@babel/plugin-transform-runtime"], // 减少代码体积
                 },
-                
               },
             ],
           },
@@ -117,6 +117,13 @@ module.exports = {
     }),
   ],
   // optimization ，js在开发模式下不用压缩所以不用配置
+  optimization: {
+    // 代码分割配置
+    splitChunks: {
+      chunks: "all", // 对所有模块都进行分割
+      // 其他内容用默认配置即可
+    },
+  },
   // 开发服务器
   devServer: {
     host: "localhost", // 启动服务器域名
