@@ -1,25 +1,16 @@
-import count from "./js/count";
-import sum from "./js/sum";
-// 引入 Css 资源，Webpack才会对其打包
-import "./css/iconfont.css";
-import "./css/index.css";
-import "./less/index.less";
-import "./sass/index.sass";
-import "./sass/index.scss";
-import "./styl/index.styl";
+import { sum } from "./math";
+// import count from "./count";
 
-// console.log(count(2, 1));
-// console.log(sum(1, 2, 3, 4));
-const result1 = count(2, 1);
-console.log(result1);
-const result2 = sum(1, 2, 3, 4);
-console.log(result2);
+console.log("hello main");
+console.log(sum(1, 2, 3));
 
-// 判断是否支持HMR功能
-if (module.hot) {
-  module.hot.accept("./js/count.js");
-  module.hot.accept("./js/sum.js", function (sum) {
-    const result2 = sum(1, 2, 3, 4);
-    console.log(result2);
-  });
-}
+document.getElementById("btn").onclick = function () {
+  // import 动态导入：会将动态导入的文件代码分割（拆分成单独模块），在需要使用的时候自动加载
+  import("./count")
+    .then((res) => {
+      console.log("模块加载成功", res.default(2, 1));
+    })
+    .catch((err) => {
+      console.log("模块加载失败", err);
+    });
+};
