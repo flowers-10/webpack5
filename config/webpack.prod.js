@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
+
 
 // cpu核数
 const threads = os.cpus().length;
@@ -145,6 +147,11 @@ module.exports = {
     }),
     // css压缩
     // new CssMinimizerPlugin(),
+    new PreloadWebpackPlugin({
+      rel: "preload", // preload兼容性更好
+      as: "script",
+      // rel: 'prefetch' // prefetch兼容性更差
+    }),
   ],
   optimization: {
     minimize: true,

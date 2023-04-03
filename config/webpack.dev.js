@@ -3,6 +3,8 @@ const os = require("os");
 const path = require("path");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
+
 
 // cpu核数
 const threads = os.cpus().length;
@@ -114,6 +116,11 @@ module.exports = {
       // 以 public/index.html 为模板创建文件
       // 新的html文件有两个特点：1. 内容和源文件一致 2. 自动引入打包生成的js等资源
       template: path.resolve(__dirname, "../public/index.html"),
+    }),
+    new PreloadWebpackPlugin({
+      rel: "preload", // preload兼容性更好
+      as: "script",
+      // rel: 'prefetch' // prefetch兼容性更差
     }),
   ],
   // optimization ，js在开发模式下不用压缩所以不用配置
