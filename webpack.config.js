@@ -10,20 +10,20 @@ module.exports = {
   },
   module: {
     rules: [
-        // {
-        //     test:/\.js$/,
-        //     loader:"./loaders/test-loader.js"
-        // },
-        {
-          test:/\.js$/,
-          use:[
-            "./loaders/demo/test4.js",
-            "./loaders/demo/test5.js",
-            "./loaders/demo/test6.js",
-          ]
-            // loader:"./loaders/demo/test3.js"
-
-        }
+      // {
+      //     test:/\.js$/,
+      //     loader:"./loaders/test-loader.js"
+      // },
+      {
+        test: /\.js$/,
+        // use:[
+        //   "./loaders/demo/test4.js",
+        //   "./loaders/demo/test5.js",
+        //   "./loaders/demo/test6.js",
+        // ]
+        // loader:"./loaders/demo/test3.js"
+        loader: "./loaders/clean-log-loader.js",
+      },
     ],
   },
   plugins: [
