@@ -24,6 +24,14 @@ module.exports = {
         // loader:"./loaders/demo/test3.js"
         loader: "./loaders/clean-log-loader.js",
       },
+      {
+        test: /\.js$/,
+        loader:"./loaders/banner-loader",
+        options: {
+          author:"michela",
+          description:"amazing loader"
+        }
+      }
     ],
   },
   plugins: [

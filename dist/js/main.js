@@ -15,7 +15,7 @@
   \*********************/
 /***/ (() => {
 
-eval("\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("\n    /*\n    * Author: michela\n    * Description: amazing loader\n    */\n   \n \r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 
