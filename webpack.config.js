@@ -14,14 +14,7 @@ module.exports = {
             test:/\.js$/,
             loader:"./loaders/test-loader.js"
         },
-        {
-            test:/\.js$/,
-            loader:"./loaders/test-loader.js"
-        },
-        {
-            test:/\.js$/,
-            loader:"./loaders/test-loader.js"
-        }
+        
     ],
   },
   plugins: [
