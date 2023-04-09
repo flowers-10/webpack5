@@ -6,13 +6,67 @@
 */
 class TestPlugin {
   constructor() {
-    console.log("TestPlugin constructor()");
+    console.log("TestPlugin constructor");
   }
-  // 1. webpack读取配置时，new TestPlugin() ，会执行插件 constructor 方法
-  // 2. webpack创建 compiler 对象
-  // 3. 遍历所有插件，调用插件的 apply 方法
+
   apply(compiler) {
-    console.log("TestPlugin apply()");
+    // debugger;
+    // console.log("compiler", compiler);
+    console.log("TestPlugin apply");
+
+    // 由文档可知，environment是同步钩子，所以需要使用tap注册
+    compiler.hooks.environment.tap("TestPlugin", () => {
+      console.log("TestPlugin environment");
+    });
+
+    // 由文档可知，emit是异步串行钩子 AsyncSeriesHook
+    compiler.hooks.emit.tap("TestPlugin", (compilation) => {
+      // console.log("compilation", compilation);
+      console.log("TestPlugin emit 111");
+    });
+
+    compiler.hooks.emit.tapAsync("TestPlugin", (compilation, callback) => {
+      setTimeout(() => {
+        console.log("TestPlugin emit 222");
+        callback();
+      }, 2000);
+    });
+
+    compiler.hooks.emit.tapPromise("TestPlugin", (compilation) => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log("TestPlugin emit 333");
+          resolve();
+        }, 1000);
+      });
+    });
+
+    // 由文档可知，make是异步并行钩子 AsyncParallelHook
+    compiler.hooks.make.tapAsync("TestPlugin", (compilation, callback) => {
+      // 需要在compilation hooks触发前注册才能使用
+      compilation.hooks.seal.tap("TestPlugin", () => {
+        console.log("TestPlugin seal");
+      });
+
+      setTimeout(() => {
+        console.log("TestPlugin make 111");
+        callback();
+      }, 3000);
+    });
+
+    compiler.hooks.make.tapAsync("TestPlugin", (compilation, callback) => {
+      setTimeout(() => {
+        console.log("TestPlugin make 222");
+        callback();
+      }, 1000);
+    });
+
+    compiler.hooks.make.tapAsync("TestPlugin", (compilation, callback) => {
+      setTimeout(() => {
+        console.log("TestPlugin make 333");
+        callback();
+      }, 2000);
+    });
   }
 }
 
