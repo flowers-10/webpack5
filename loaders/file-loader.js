@@ -1,19 +1,18 @@
 const loaderUtils = require("loader-utils");
 
-function fileLoader(content) {
-  // 根据文件内容生产一个新的文件名称
-  const filename = loaderUtils.interpolateName(this, "[hash].[ext]", {
+module.exports = function (content) {
+  // 1. 根据文件内容生成带hash值文件名
+  let interpolatedName = loaderUtils.interpolateName(this, "[hash].[ext][query]", {
     content,
   });
-  // 输出文件
-  this.emitFile(filename, content);
-  // 暴露出去，给js引用。
-  // 记得加上''
-  return `export default '${filename}'`;
-}
+  interpolatedName = `images/${interpolatedName}`
+  // console.log(interpolatedName);
+  // 2. 将文件输出出去
+  this.emitFile(interpolatedName, content);
+  // 3. 返回：module.exports = "文件路径（文件名）"
+  return `module.exports = "${interpolatedName}"`;
+};
 
-// loader 解决的是二进制的内容
-// 图片是 Buffer 数据
-fileLoader.raw = true;
-
-module.exports = fileLoader;
+// 需要处理图片、字体等文件。它们都是buffer数据
+// 需要使用raw loader才能处理
+module.exports.raw = true;
