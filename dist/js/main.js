@@ -7,6 +7,7 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/main.js":
@@ -15,7 +16,7 @@
   \*********************/
 /***/ (() => {
 
-eval("\n    /*\n    * Author: michela\n    * Description: amazing loader\n    */\n   \n \r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("\n    /*\n    * Author: michela\n    * Description: amazing loader\n    */\n   \n \n\n\n\n\n\nvar foo = function foo(anyParams) {\n  \n};\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 

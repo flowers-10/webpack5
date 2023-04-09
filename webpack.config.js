@@ -31,6 +31,13 @@ module.exports = {
           author:"michela",
           description:"amazing loader"
         }
+      },
+      {
+        test: /\.js$/,
+        loader:"./loaders/babel-loader",
+        options: {
+          presets:["@babel/preset-env"]
+        }
       }
     ],
   },
