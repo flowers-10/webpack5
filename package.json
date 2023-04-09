@@ -1,4 +1,5 @@
 {
+  "name": "source",
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
@@ -7,6 +8,9 @@
   },
   "dependencies": {
     "html-webpack-plugin": "^5.5.0"
+  },
+  "scripts": {
+    "debug": "node --inspect-brk ./node_modules/webpack-cli/bin/cli.js"
   },
   "browserslist": [
     "last 2 version",

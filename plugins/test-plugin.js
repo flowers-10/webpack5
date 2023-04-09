@@ -10,8 +10,8 @@ class TestPlugin {
   }
 
   apply(compiler) {
-    // debugger;
-    // console.log("compiler", compiler);
+    debugger;
+    console.log("compiler", compiler);
     console.log("TestPlugin apply");
 
     // 由文档可知，environment是同步钩子，所以需要使用tap注册
@@ -21,7 +21,7 @@ class TestPlugin {
 
     // 由文档可知，emit是异步串行钩子 AsyncSeriesHook
     compiler.hooks.emit.tap("TestPlugin", (compilation) => {
-      // console.log("compilation", compilation);
+      console.log("compilation", compilation);
       console.log("TestPlugin emit 111");
     });
 
