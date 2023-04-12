@@ -1,7 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TestPlugin  = require("./plugins/test-plugin")
-const BannerWebpackPlugin = require("./plugins/banner-webpack-plugin")
+const TestPlugin = require("./plugins/test-plugin");
+const BannerWebpackPlugin = require("./plugins/banner-webpack-plugin");
+const CleanWebpackPlugin = require("./plugins/clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/main.js",
@@ -58,8 +59,9 @@ module.exports = {
       template: path.resolve(__dirname, "public/index.html"),
     }),
     new BannerWebpackPlugin({
-      author:"michela"
-    })
+      author: "michela",
+    }),
+    new CleanWebpackPlugin(),
   ],
   mode: "production",
 };
